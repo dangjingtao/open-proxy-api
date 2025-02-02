@@ -11,11 +11,20 @@
 
 The disclaimer states that this is for personal use only， if you like the service, you can pay to use it on the official website.
 
+## Description
 
+Supported AI Service Providers
+
+| Service Provider |      |      |      |
+| ---------------- | ---- | ---- | ---- |
+| qwen             |      |      |      |
+| kimi             |      |      |      |
+| deepseek         |      |      |      |
+|                  |      |      |      |
 
 ## Environment variables
 
-| Name | Optional | Remark                          |
+| Name | Optional | Remarks                         |
 |------|------|----------------------------------|
 | QWEN_AUTHORIZATION | Y | Bearer + {API_KEY} |
 | KIMI_AUTHORIZATION | Y | Bearer + {API_KEY} |
@@ -27,8 +36,6 @@ Multi-accounts:
 Bearer TOKEN1,TOKEN2,TOKEN3
 ```
 
-
-
 ## Deploy via Docker 
 
 Please prepare a server with a public IP address and open port 5090.  Pull the image and start the service.
@@ -36,24 +43,15 @@ Please prepare a server with a public IP address and open port 5090.  Pull the i
 ```shell
 docker run -it -d --init --name open-proxy-api -p 5090:5090 -e TZ=Asia/Shanghai  dangjingtao/open-proxy-api:latest
 # or configure the token in the environment variables
-docker run -it -d --init --name open-proxy-api -p 5090:5090 -e TZ=Asia/Shanghai -e QWEN_AUTHORIZATION=xxx KIMI_AUTHORIZATION=yyy DEEPSEEK_AUTHORIZATION dangjingtao/open-proxy-api:latest
+docker run -it -d --init --name open-proxy-api -p 5090:5090 -e TZ=Asia/Shanghai -e QWEN_AUTHORIZATION=xxx KIMI_AUTHORIZATION=yyy DEEPSEEK_AUTHORIZATION=zzz dangjingtao/open-proxy-api:latest
 ```
 
-查看服务实时日志
-
 ```shell
+# View service real-time logs
 docker logs -f open-proxy-api
-```
-
-重启服务
-
-```shell
+# Restart the service
 docker restart open-proxy-api
-```
-
-停止服务
-
-```shell
+# docker stop open-proxy-api
 docker stop open-proxy-api
 ```
 
@@ -71,6 +69,9 @@ services:
       - "5090:5090"
     environment:
       - TZ=Asia/Shanghai
+      - QWEN_AUTHORIZATION=xxx
+      - KIMI_AUTHORIZATION=yyy
+      - DEEPSEEK_AUTHORIZATION=zzz
 ```
 
 ## Manual deployment

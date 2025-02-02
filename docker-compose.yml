@@ -1,0 +1,12 @@
+version: '3'
+services:
+  open-proxy-api:
+    image: dangjingtao/open-proxy-api:latest
+    container_name: open-proxy-api
+    ports:
+      - "5090:5090"
+    environment:
+      - TZ=${TZ}
+      - QWEN_AUTHORIZATION=${QWEN_AUTHORIZATION}
+      - KIMI_AUTHORIZATION=${KIMI_AUTHORIZATION}
+      - DEEPSEEK_AUTHORIZATION=${DEEPSEEK_AUTHORIZATION}
