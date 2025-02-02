@@ -41,9 +41,9 @@ Bearer TOKEN1,TOKEN2,TOKEN3
 Please prepare a server with a public IP address and open port 5090.  Pull the image and start the service.
 
 ```shell
-docker run -it -d --init --name open-proxy-api -p 5090:5090 -e TZ=Asia/Shanghai  dangjingtao/open-proxy-api:latest
+docker run -it -d --init --name open-proxy-api -p 5090:5090 -e TZ=Asia/Shanghai  tomz2024/open-proxy-api:latest
 # or configure the token in the environment variables
-docker run -it -d --init --name open-proxy-api -p 5090:5090 -e TZ=Asia/Shanghai -e QWEN_AUTHORIZATION=xxx KIMI_AUTHORIZATION=yyy DEEPSEEK_AUTHORIZATION=zzz dangjingtao/open-proxy-api:latest
+docker run -it -d --init --name open-proxy-api -p 5090:5090 -e TZ=Asia/Shanghai -e QWEN_AUTHORIZATION=xxx KIMI_AUTHORIZATION=yyy DEEPSEEK_AUTHORIZATION=zzz tomz2024/open-proxy-api:latest
 ```
 
 ```shell
@@ -63,7 +63,7 @@ version: '3'
 services:
   open-proxy-api:
     container_name: open-proxy-api
-    image: dangjingtao/open-proxy-api:latest
+    image: tomz2024/open-proxy-api:latest
     restart: always
     ports:
       - "5090:5090"
