@@ -6,14 +6,14 @@ import "@/lib/initialize.ts";
 import server from "@/lib/server.ts";
 import logger from "@/lib/logger.ts";
 
-const SERVICE_PROVIDERS = ["qwen", "kimi"];
+const SERVICE_PROVIDERS = ["qwen", "kimi", "deepseek"];
 
 const startupTime = performance.now();
 
 (async () => {
   logger.header();
 
-  const res = await server.registerServiceProviders(SERVICE_PROVIDERS);
+  await server.registerServiceProviders(SERVICE_PROVIDERS);
 
   console.log("<<<< server start >>>>");
   console.table([
@@ -24,7 +24,7 @@ const startupTime = performance.now();
       name: config.service.name,
     },
   ]);
-  console.log("<<<< model info >>>>");
+  console.log("<<<< service provider info >>>>");
   console.table(
     SERVICE_PROVIDERS.map((name) => ({
       modelsName: name,

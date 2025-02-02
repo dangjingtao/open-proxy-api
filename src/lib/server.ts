@@ -12,10 +12,12 @@ import config from "./config.ts";
 
 import qwen from "@/serviceProviders/qwen/index.ts";
 import kimi from "@/serviceProviders/kimi/index.ts";
+import deepseek from "@/serviceProviders/deepseek/index.ts";
 
 const registerCenter = {
   qwen,
   kimi,
+  deepseek,
 };
 
 interface ServiceProviderConfig {
@@ -79,7 +81,8 @@ class Server {
       logger.success(`Service provider [${serviceProvider}] registered`);
       this.serviceProviders.push(registerCenter[serviceProvider]);
     }
-    this.registerAttachRoutes("", []);
+
+    this.registerAttachRoutes();
 
     return []; // Return an empty array or appropriate value
   }
@@ -117,9 +120,7 @@ class Server {
     });
   }
 
-  registerAttachRoutes(serviceProvider: string, routes: any[]) {
-    this.app.use(this.router.routes());
-
+  registerAttachRoutes() {
     this.app.use(this.router.routes());
 
     // 未知请求处理
