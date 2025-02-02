@@ -1,7 +1,7 @@
 version: '3'
 services:
   open-proxy-api:
-    image: dangjingtao/open-proxy-api:latest
+    image: tomz2024/open-proxy-api:latest
     container_name: open-proxy-api
     ports:
       - "5090:5090"
