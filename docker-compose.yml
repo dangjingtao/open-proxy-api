@@ -6,7 +6,7 @@ services:
     ports:
       - "5090:5090"
     environment:
-      - TZ=${TZ}
+      - TZ=Asia/Shanghai
       - QWEN_AUTHORIZATION=${QWEN_AUTHORIZATION}
       - KIMI_AUTHORIZATION=${KIMI_AUTHORIZATION}
       - DEEPSEEK_AUTHORIZATION=${DEEPSEEK_AUTHORIZATION}
