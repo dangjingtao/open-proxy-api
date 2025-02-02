@@ -51,6 +51,26 @@ const util = {
       : null;
   },
 
+  generateCookie() {
+    const timestamp = util.unixTimestamp();
+    const items = [
+      `Hm_lvt_358cae4815e85d48f7e8ab7f3680a74b=${
+        timestamp - Math.round(Math.random() * 2592000)
+      }`,
+      `_ga=GA1.1.${util.generateRandomString({
+        length: 10,
+        charset: "numeric",
+      })}.${timestamp - Math.round(Math.random() * 2592000)}`,
+      `_ga_YXD8W70SZP=GS1.1.${
+        timestamp - Math.round(Math.random() * 2592000)
+      }.1.1.${timestamp - Math.round(Math.random() * 2592000)}.0.0.0`,
+      `Hm_lpvt_358cae4815e85d48f7e8ab7f3680a74b=${
+        timestamp - Math.round(Math.random() * 2592000)
+      }`,
+    ];
+    return items.join("; ");
+  },
+
   mimeToExtension(value: string) {
     let extension = mime.getExtension(value);
     if (extension == "mpga") return "mp3";

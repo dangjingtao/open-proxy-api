@@ -9,10 +9,13 @@ import Response from "./response/Response.js";
 import FailureBody from "./response/FailureBody.ts";
 import logger from "./logger.ts";
 import config from "./config.ts";
+
 import qwen from "@/serviceProviders/qwen/index.ts";
+import kimi from "@/serviceProviders/kimi/index.ts";
 
 const registerCenter = {
   qwen,
+  kimi,
 };
 
 interface ServiceProviderConfig {
@@ -76,6 +79,8 @@ class Server {
       logger.success(`Service provider [${serviceProvider}] registered`);
       this.serviceProviders.push(registerCenter[serviceProvider]);
     }
+    this.registerAttachRoutes("", []);
+
     return []; // Return an empty array or appropriate value
   }
 
@@ -110,6 +115,10 @@ class Server {
       }
       logger.info(`Route ${config.service.urlPrefix || ""}${prefix} attached`);
     });
+  }
+
+  registerAttachRoutes(serviceProvider: string, routes: any[]) {
+    this.app.use(this.router.routes());
 
     this.app.use(this.router.routes());
 
@@ -121,7 +130,7 @@ class Server {
           ctx.request.url
         } request is not supported - ${request.remoteIP || "unknown"}`
       );
-      const message = `[请求有误]: 正确请求为 POST -> /${serviceProvider}/v1/chat/completions，当前请求为 ${ctx.request.method} -> ${ctx.request.url} 请纠正`;
+      const message = `[请求有误]: 正确请求为 POST -> /<SEVICE_PROVIDER>/v1/chat/completions，当前请求为 ${ctx.request.method} -> ${ctx.request.url} 请纠正`;
       logger.warn(message);
       const failureBody = new FailureBody(new Error(message));
       const response = new Response(failureBody);

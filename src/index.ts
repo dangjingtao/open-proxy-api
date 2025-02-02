@@ -5,9 +5,8 @@ import config from "@/lib/config.ts";
 import "@/lib/initialize.ts";
 import server from "@/lib/server.ts";
 import logger from "@/lib/logger.ts";
-import models from "./serviceProviders/qwen/routes/models.ts";
 
-const SERVICE_PROVIDERS = ["qwen"];
+const SERVICE_PROVIDERS = ["qwen", "kimi"];
 
 const startupTime = performance.now();
 

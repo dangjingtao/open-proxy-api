@@ -16,39 +16,34 @@ export default {
         )
         .validate("body.messages", _.isArray)
         .validate("headers.authorization", _.isString);
-      // ticket切分
+      // refresh_token切分
       const BearerHeader = AUTHORIZATION
         ? AUTHORIZATION
         : request.headers.authorization;
       const tokens = chat.tokenSplit(BearerHeader);
-      // 随机挑选一个ticket
+      // 随机挑选一个refresh_token
       const token = _.sample(tokens);
-      const {
+      let {
         model,
         conversation_id: convId,
         messages,
-        search_type,
         stream,
+        use_search,
       } = request.body;
+
+      if (use_search) model = "kimi-search";
+
       if (stream) {
         const stream = await chat.createCompletionStream(
           model,
           messages,
-          search_type,
           token,
           convId
         );
         return new Response(stream, {
           type: "text/event-stream",
         });
-      } else
-        return await chat.createCompletion(
-          model,
-          messages,
-          search_type,
-          token,
-          convId
-        );
+      } else return await chat.createCompletion(model, messages, token, convId);
     },
   },
 };
