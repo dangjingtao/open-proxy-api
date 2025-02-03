@@ -3,7 +3,7 @@
 [![](https://img.shields.io/github/license/dangjingtao/open-proxy-api.svg)](LICENSE)
 ![](https://img.shields.io/github/stars/dangjingtao/open-proxy-api.svg)
 ![](https://img.shields.io/github/forks/dangjingtao/open-proxy-api.svg)
-![](https://img.shields.io/docker/pulls/dangjingtao/open-proxy-api.svg)
+![](https://img.shields.io/docker/pulls/tomz2024/open-proxy-api.svg)
 
 [toc]
 
@@ -41,9 +41,13 @@ Bearer TOKEN1,TOKEN2,TOKEN3
 Please prepare a server with a public IP address and open port 5090.  Pull the image and start the service.
 
 ```shell
+docker pull tomz2024/open-proxy-api:latest
+```
+
+```shell
 docker run -it -d --init --name open-proxy-api -p 5090:5090 -e TZ=Asia/Shanghai  tomz2024/open-proxy-api:latest
 # or configure the token in the environment variables
-docker run -it -d --init --name open-proxy-api -p 5090:5090 -e TZ=Asia/Shanghai -e QWEN_AUTHORIZATION=xxx KIMI_AUTHORIZATION=yyy DEEPSEEK_AUTHORIZATION=zzz tomz2024/open-proxy-api:latest
+docker run -it -d --init --name open-proxy-api -p 5090:5090 -e TZ=Asia/Shanghai -e QWEN_AUTHORIZATION=xxx KIMI_AUTHORIZATION=yyy DEEPSEEK_AUTHORIZATION=zzzb -d tomz2024/open-proxy-api:latest
 ```
 
 ```shell
