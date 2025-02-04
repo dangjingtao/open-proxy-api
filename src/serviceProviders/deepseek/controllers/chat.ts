@@ -58,7 +58,7 @@ async function getIPAddress() {
     validateStatus: () => true,
   });
   const ip = result.data.match(/<meta name="ip" content="([\d.]+)">/)?.[1];
-  if (!ip) throw new APIException(EX.API_REQUEST_FAILED, "获取IP地址失败");
+  // if (!ip) throw new APIException(EX.API_REQUEST_FAILED, "获取IP地址失败");
   logger.info(`当前IP地址: ${ip}`);
   ipAddress = ip;
   return ip;
