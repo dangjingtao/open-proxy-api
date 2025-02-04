@@ -206,6 +206,7 @@ class Server {
   async listen() {
     const host = config.service.host;
     const port = config.service.port;
+
     await Promise.all([
       new Promise((resolve, reject) => {
         if (

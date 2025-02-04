@@ -15,12 +15,12 @@ The disclaimer states that this is for personal use only， if you like the serv
 
 Supported AI Service Providers
 
-| Service Provider |      |      |      |
-| ---------------- | ---- | ---- | ---- |
-| qwen             |      |      |      |
-| kimi             |      |      |      |
-| deepseek         |      |      |      |
-|                  |      |      |      |
+| Service Provider | Supported Model | Limit |      |
+| ---------------- | --------------- | ----- | ---- |
+| qwen             |                 |       |      |
+| kimi             |                 |       |      |
+| deepseek         |                 |       |      |
+|                  |                 |       |      |
 
 ## Environment variables
 
